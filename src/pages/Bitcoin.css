@@ -21,31 +21,6 @@
   border-radius: 12px;
 }
 
-#search_Bitcoin_button,
-#reset_Bitcoin_button,
-#validated_Bitcoin_button,
-#new_Bitcoin_button {
-  color: white;
-  background-color: #0a1845;
-  border: none;
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-  margin: 5px;
-  border-radius: 12px;
-}
-#invalid_Bitcoin_button {
-  color: black;
-  background-color: white;
-  border: none;
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-  margin: 5px;
-  border-radius: 12px;
-  box-shadow: 3px 3px 3px 2px #888888;
-}
-
 table {
   width: 92%;
   text-decoration: none;
@@ -64,14 +39,4 @@ table {
 }
 #Bitcoins_table td {
   padding: 16px;
-}
-#Bitcoin_status p {
-  color: #5d8b75;
-  background-color: #e6fcf0;
-  margin: 0;
-  padding: 7px;
-  border-radius: 12px;
-}
-#Bitcoins_table_checkbox {
-  margin-top: 22px;
 }

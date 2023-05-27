@@ -1,46 +1,60 @@
 import { React, useState, useEffect } from "react";
-import "./Bitcoin.css";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
 ////////////////
 export default function Test() {
   ////////////////
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setIsLoading(true);
-
-      try {
-        const responseData = await fetch(
-          "https://api.coindesk.com/v1/bpi/currentprice.json"
-        ).then((response) => response.json());
-
-        setProducts(responseData);
-      } catch {
-        setError("Could not load info at the moment");
-      }
-
-      setIsLoading(false);
-    };
-
-    fetchProducts();
-  }, []);
-
-  console.log(products.bpi.EUR.rate);
+  const data = {
+    labels: ["Bitcoin"],
+    datasets: [
+      {
+        label: "Bitcoin to EUR",
+        data: [26038, 100000],
+        borderColor: "black",
+        backgroundColor: "blue",
+      },
+      {
+        label: "Bitcoin to USD",
+        data: [26729, 100000],
+        borderColor: "black",
+        backgroundColor: "red",
+      },
+      {
+        label: "Bitcoin to GBP",
+        data: [22334, 100000],
+        borderColor: "black",
+        backgroundColor: "green",
+      },
+    ],
+  };
 
   return (
     <div>
-      <h1>Our Products</h1>
-      {isLoading ? <h1>isLoading</h1> : null}
-      {error && <h1>{error}</h1>}
-      <div>
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        {/* <p>{products.bpi.GBP.rate}</p> */}
-      </div>
+      {/* <!-- CHARTS STARTS HERE --> */}
+      <Bar
+        data={data}
+        options={{
+          responsive: true,
+        }}
+      />
+      {/* <!-- CHARTS ENDS HERE --> */}
     </div>
   );
 }
