@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 //
 import Bitcoin from "./pages/Bitcoin";
+import SearchBar from "./pages/SearchBar";
 import NoPage from "./pages/NoPage";
 import Home from "./pages/Home";
 import Test from "./pages/Test";
@@ -22,7 +23,7 @@ export default function App() {
   return (
     <div className="App">
       {/* main page      */}
-      <h2> Main Heading - stays </h2>
+      <h1> rocnogu react library </h1>
 
       <BrowserRouter>
         {/* sideBar nav      */}
@@ -46,6 +47,14 @@ export default function App() {
                 <Typography variant="body1">Bitcoin</Typography>
               </Stack>
             </NavLink>
+
+            <NavLink to="/SearchBar" end>
+              <Stack direction="row" alignItems="center" gap={1}>
+                <InventoryIcon />
+                <Typography variant="body1">SearchBar</Typography>
+              </Stack>
+            </NavLink>
+
             <NavLink to="/Test" end>
               <Stack direction="row" alignItems="center" gap={1}>
                 <InventoryIcon />
@@ -57,6 +66,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Bitcoin" element={<Bitcoin />} />
+          <Route path="SearchBar" element={<SearchBar />} />
           <Route path="Test" element={<Test />} />
           <Route path="*" element={<NoPage />} />
         </Routes>

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import "./Bitcoin.css";
+import "../css/Bitcoin.css";
 //
 import { Bar } from "react-chartjs-2";
 import {
@@ -49,30 +49,37 @@ export default function Bitcoin() {
   {
     /* <!-- CHARTS STARTS HERE --> */
   }
-  const barGraphData = {
-    labels: ["Bitcoin"],
-    datasets: [
-      {
-        label: "Bitcoin to EUR",
-        data: [26038, 66666],
-        borderColor: "black",
-        backgroundColor: "blue",
-      },
-      {
-        label: "Bitcoin to USD",
-        data: [26729, 66666],
-        borderColor: "black",
-        backgroundColor: "red",
-      },
-      {
-        label: "Bitcoin to GBP",
-        data: [22334, 66666],
-        borderColor: "black",
-        backgroundColor: "green",
-      },
-    ],
-  };
-  console.log(barGraphData.datasets.data);
+
+  if (bitcoin_data.bpi) {
+    let priceEU = bitcoin_data.bpi.EUR.rate.replace(/\D/g, "").slice(0, 5);
+    let priceUSD = bitcoin_data.bpi.USD.rate.replace(/\D/g, "").slice(0, 5);
+    let priceGBP = bitcoin_data.bpi.GBP.rate.replace(/\D/g, "").slice(0, 5);
+    //
+    var barGraphData = {
+      labels: ["Bitcoin"],
+      datasets: [
+        {
+          label: "Bitcoin to EUR",
+          data: [priceEU, 66666],
+          borderColor: "black",
+          backgroundColor: "blue",
+        },
+        {
+          label: "Bitcoin to USD",
+          data: [priceUSD, 66666],
+          borderColor: "black",
+          backgroundColor: "red",
+        },
+        {
+          label: "Bitcoin to GBP",
+          data: [priceGBP, 66666],
+          borderColor: "black",
+          backgroundColor: "green",
+        },
+      ],
+    };
+  }
+
   {
     /* <!-- CHARTS ENDS HERE --> */
   }
@@ -80,7 +87,7 @@ export default function Bitcoin() {
   return (
     <div>
       <div>
-        <h1>Bitcoin Price informaiton</h1>
+        <h2>Bitcoin Price informaiton</h2>
       </div>
       <div className="main_bar_Bitcoin">
         <table>
@@ -126,11 +133,9 @@ export default function Bitcoin() {
             }}
           />
         ) : (
-          <tr colSpan="12">
-            <td>
-              <h2>Data failed to load</h2>
-            </td>
-          </tr>
+          <div colSpan="12">
+            <h2>Data failed to load</h2>
+          </div>
         )}
 
         {/* <!-- CHARTS ENDS HERE --> */}

@@ -1,0 +1,9 @@
+input {
+  padding: 5px;
+}
+ul {
+  padding: 5px;
+  margin: 10px;
+  border: solid black 1px;
+  width: fit-content;
+}
