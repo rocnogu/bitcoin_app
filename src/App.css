@@ -39,7 +39,7 @@ html {
 #navSideBar a.active {
   text-decoration: none;
   width: 100%;
-  background-color: black;
+  background-color: rgb(20, 124, 82);
 }
 
 #navSideBar {
